@@ -1,0 +1,17 @@
+*.rpo
+*.ptm
+*.upd
+*.prw
+*.pak
+*.log
+*.ini
+*.json
+**/json/
+**/logs/
+**/apo/
+**/packages/
+**/protheus_data/
+**/.vscode
+**/includes
+**/historic
+**/*tmpadvplc*/
