@@ -1,3 +1,21 @@
-.vscode
-*.log
+
+#ignore files advplc
+infrastructure/tools/advplc/**/*.ptm
+infrastructure/tools/advplc/**/*.upd
+infrastructure/tools/advplc/**/*.prw
+infrastructure/tools/advplc/**/*.pak
+infrastructure/tools/advplc/**/*.log
+infrastructure/tools/advplc/**/*.ini
+infrastructure/tools/advplc/**/json/
+infrastructure/tools/advplc/**/logs/
+infrastructure/tools/advplc/**/apo/
+infrastructure/tools/advplc/**/packages/
+infrastructure/tools/advplc/**/protheus_data/
+infrastructure/tools/advplc/**/includes
+infrastructure/tools/advplc/**/historic
+infrastructure/tools/advplc/**/*tmpadvplc*/
+
+#ignore files general
+**/.vscode
+**/.log
 
