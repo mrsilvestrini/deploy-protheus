@@ -37,13 +37,17 @@ Create a VM in VMWare
 - Configure Image
 
   - Configure Network
-    foo
+    https://linuxconfig.org/rhel-8-configure-static-ip-address
+
   - Configure ssh
-    foo
+    https://www.cyberciti.biz/faq/how-to-set-up-ssh-keys-on-rhel-8/
 
   - Configure Firewall (firewalld or iptables)
-    foo
+    systemctl stop firewalld
+    systemctl disable firewalld
+
   - Configure Selinux
-    foo
+    https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/using_selinux/changing-selinux-states-and-modes_using-selinux
+
   - Configure Mounts
     foo
