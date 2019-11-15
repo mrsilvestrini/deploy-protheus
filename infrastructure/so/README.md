@@ -25,7 +25,7 @@ Oficial Doc
 
 Create a VM in VMWare
 
-- Download file .iso
+- Download file .ils
   https://edelivery.oracle.com/osdc/faces/SoftwareDelivery
 
 - Create Template in VMWare
@@ -50,4 +50,4 @@ Create a VM in VMWare
     https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/using_selinux/changing-selinux-states-and-modes_using-selinux
 
   - Configure Mounts
-    foo
+    https://www.techotopia.com/index.php/Sharing_Files_between_RHEL_and_Windows_Systems_with_Samba

@@ -18,4 +18,4 @@ infrastructure/tools/advplc/**/*tmpadvplc*/
 #ignore files general
 **/.vscode
 **/.log
-
+**/ssh
