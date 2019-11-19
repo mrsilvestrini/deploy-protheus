@@ -19,3 +19,4 @@ infrastructure/tools/advplc/**/*tmpadvplc*/
 **/.vscode
 **/.log
 **/ssh
+set-my-ssh.sh
