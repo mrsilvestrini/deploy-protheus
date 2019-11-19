@@ -125,6 +125,7 @@ unset HISTFILE
 # you have SSH keys you want to keep around.
 
 /bin/rm -rf ~root/.ssh/
+/bin/rm -rf /home/*/.ssh
 /bin/rm -f ~root/anaconda-ks.cfg
 
 # Step 12: Clear bash history and shutdown for template creation
@@ -133,6 +134,7 @@ unset HISTFILE
 # shutdown the server in a clean state for converting to a VM:
 
 history –c
-sys-unconfig
+#sys-unconfig
+/bin/init 6
 
 # The server will automatically now shutdown.
