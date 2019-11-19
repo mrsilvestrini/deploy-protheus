@@ -24,11 +24,11 @@ Stack of Project:
 
 Infraestructure for Project
 
-- Oracle Linux 7.5
+- Oracle Linux 8.0
 
 - Tools
   - Powershell Core 6.2
-  - Python 3.7
+  - Python 3.8
   - Ansible
   - Docker Machine
   - Git
