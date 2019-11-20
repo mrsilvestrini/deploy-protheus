@@ -22,7 +22,7 @@ License
 
 Stack of Project:
 
-Infraestructure for Project
+Infrastructure
 
 - Oracle Linux 8.0
 
