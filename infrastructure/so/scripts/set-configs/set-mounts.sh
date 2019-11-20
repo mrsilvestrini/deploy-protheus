@@ -1,1 +1,1 @@
-#lines for set mounts
+#lines for set mounts,my case use fstab in /etc/fstab
