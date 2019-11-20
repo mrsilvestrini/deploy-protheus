@@ -13,5 +13,9 @@
 /bin/chmod 644 /home/your_user/.ssh/authorized_keys
 /bin/chown -R your_user:your_user /home/your_user/.ssh/
 
+#set sshd_config
+/bin/mv -p  /etc/ssh/sshd_config /etc/ssh/sshd_config_bkp
+/bin/cp -p  /mnt/configs/ssh/sshd_config /etc/ssh/
+
 #restart ssh
 /bin/systemctl start sshd.service
