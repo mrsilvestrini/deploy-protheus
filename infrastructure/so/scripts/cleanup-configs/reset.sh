@@ -2,6 +2,8 @@
 # https://community.spiceworks.com/how_to/151558-create-a-rhel-centos-6-7-template-for-vmware-vsphere
 
 #Step 1: Stop the Logging Services
+echo Step 1: Stop the Logging Services
+
 
 # You’re going to all this trouble to create a clean deployable template,
 # so you might as well stop writing new data. Otherwise all your deployed
@@ -12,6 +14,7 @@
 /sbin/service auditd stop 
 
 # Step 2: Remove any old kernels
+echo  Step 2: Remove any old kernels
 
 # You need yum-utils installed to get package-cleanup. 
 # This has to go before the yum cleanup in the next step
@@ -25,6 +28,7 @@ yum install yum-utils -y
 package-cleanup --oldkernels --count=1
 
 # Step 3: Clean out Yum
+echo Step 3: Clean out Yum
 
 # Yum keeps a cache in /var/cache/yum that can grow quite large,
 # especially after applying patches to the template. 
@@ -36,6 +40,7 @@ package-cleanup --oldkernels --count=1
 yum clean all
 
 # Step 4: Force the logs to rotate and remove old logs we don’tneed
+echo Step 4: Force the logs to rotate and remove old logs we don’tneed
 
 # Starting fresh with the logs is nice. It means that you don’t have
 # old, irrelevant log data on all your cloned VMs. It also means that
@@ -52,6 +57,7 @@ yum clean all
 /bin/rm -rf /var/log/anaconda
 
 # Step 5: Truncate the audit logs (and other logs we want to keep placeholders for)
+echo Step 5: Truncate the audit logs '(and other logs we want to keep placeholders for)'
 
 # This whole /dev/null business is a neat function that lets you clear
 # a file without restarting the process associated with it, useful in
@@ -64,6 +70,7 @@ yum clean all
 /bin/cat /dev/null > /var/log/grubby
 
 # Step 6: Remove the udev persistent device rules
+echo Step 6: Remove the udev persistent device rules
 
 # Have you ever noticed that if you clone/deploy a 
 # Linux VM that won't bring up it single network interface
@@ -78,15 +85,17 @@ yum clean all
 /bin/rm -f /etc/udev/rules.d/70*
 
 # Step 7: Remove the traces of the template MAC address and UUIDs
+echo Step 7: Remove the traces of the template MAC address and UUIDs
 
 # This is a corollary to step 5, just removing unique identifiers
 # from the template so the cloned VM gets its own. You can also change
 # the “-i” to “-i.bak” if you want to keep a backup copy of the file.
 
 # Issue the following command to clear the identifiers:
-/bin/sed -i ‘/^(HWADDR|UUID)=/d’ /etc/sysconfig/network-scripts/ifcfg-e*
+/bin/sed -i '/^(HWADDR|UUID)=/d' /etc/sysconfig/network-scripts/ifcfg-e*
 
 # Step 8: Clean /tmp out
+echo Step 8: Clean /tmp out
 
 # Under normal, non-template circumstances you really don’t 
 # ever want to run rm on /tmp like this. Use tmpwatch or any
@@ -102,6 +111,7 @@ yum clean all
 /bin/rm –rf /var/tmp/*
 
 # Step 9: Remove the SSH host keys
+echo Step 9: Remove the SSH host keys
 
 # If you don’t do this all your VMs will have all the same keys,
 # which has negative security implications. It’s also annoying to
@@ -112,6 +122,7 @@ yum clean all
 /bin/rm –f /etc/ssh/*key*
 
 # Step 10: Remove the root user’s shell history
+echo Step 10: Remove the root user’s shell history
 
 # No sense in keeping this history around, it’s 
 # irrelevant to the cloned VM.
@@ -120,6 +131,7 @@ yum clean all
 unset HISTFILE
 
 # Step 11: Remove the root user’s SSH history and other stuff
+echo Step 11: Remove the root user’s SSH history and other stuff
 
 # You might choose to just remove ~root/.ssh/known_hosts if 
 # you have SSH keys you want to keep around.
@@ -129,12 +141,14 @@ unset HISTFILE
 /bin/rm -f ~root/anaconda-ks.cfg
 
 # Step 12: Clear bash history and shutdown for template creation
+echo Step 12: Clear bash history and shutdown for template creation
 
 # Time to clear the history of everything you've just done and 
 # shutdown the server in a clean state for converting to a VM:
-
 history –c
+
 #sys-unconfig
-/bin/init 6
+echo FINISH CLEANUP TEMPLATE...YOUR SYSTEM REBOOT IN 15 SECONDS...
+/sbin/shutdown -r -t 15 
 
 # The server will automatically now shutdown.
