@@ -18,5 +18,7 @@ infrastructure/tools/advplc/**/*tmpadvplc*/
 #ignore files general
 **/.vscode
 **/.log
-**/ssh
+
+#ssh
+authorized_keys
 set-my-ssh.sh
