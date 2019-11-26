@@ -1,0 +1,18 @@
+
+#
+# /etc/fstab
+# Created by anaconda on Thu Jan 24 20:35:31 2019
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/ol-root     /                       ext4    defaults        1 1
+UUID=t024b28b-598j-4835-333d-n5fab58e3b90 /boot                   xfs     defaults        0 0
+/dev/mapper/ol-home     /home                   ext4    defaults        1 2
+/dev/mapper/ol-swap     swap                    swap    defaults        0 0
+
+
+#SHARES WINDOWS 
+
+#FOLDER PROJECTS
+//your_ip/your_share/ cifs username=your_user,password=your_pass,user,dir_mode=0777,file_mode=0777 0 0
