@@ -22,3 +22,6 @@ infrastructure/tools/advplc/**/*tmpadvplc*/
 #ssh
 authorized_keys
 set-my-ssh.sh
+
+#mounts
+my-fstab
