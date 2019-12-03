@@ -25,7 +25,7 @@ Oficial Doc
 
 Create a VM in VMWare
 
-- Download file .ils
+- Download image file (.iso)
   https://edelivery.oracle.com/osdc/faces/SoftwareDelivery
 
 - Create Template in VMWare
