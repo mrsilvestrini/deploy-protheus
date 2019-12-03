@@ -1,22 +1,24 @@
 # Credits this tutorial:
 # https://community.spiceworks.com/how_to/151558-create-a-rhel-centos-6-7-template-for-vmware-vsphere
 
+# In case de error in execution sh with bash, execute command:
+# sed -i 's/\r$//' reset.sh
+
 #Step 1: Stop the Logging Services
 echo Step 1: Stop the Logging Services
-
 
 # You’re going to all this trouble to create a clean deployable template,
 # so you might as well stop writing new data. Otherwise all your deployed
 # VMs will have a log of you shutting the VM down.
 
 # Issue the following commands to stop the logging services:
-/sbin/service rsyslog stop 
-/sbin/service auditd stop 
+/sbin/service rsyslog stop
+/sbin/service auditd stop
 
 # Step 2: Remove any old kernels
-echo  Step 2: Remove any old kernels
+echo Step 2: Remove any old kernels
 
-# You need yum-utils installed to get package-cleanup. 
+# You need yum-utils installed to get package-cleanup.
 # This has to go before the yum cleanup in the next step
 # as it needs your channel data. I usually let the post-deployment
 # configuration management take care of this, but this is nice when
@@ -31,9 +33,9 @@ package-cleanup --oldkernels --count=1
 echo Step 3: Clean out Yum
 
 # Yum keeps a cache in /var/cache/yum that can grow quite large,
-# especially after applying patches to the template. 
+# especially after applying patches to the template.
 # For example,my lab host currently has 360 MB of stuff in yum’s cache right now,
-# just from a few months of incremental patching. In the interest of 
+# just from a few months of incremental patching. In the interest of
 # keeping my template as small as possible I wipe this.
 
 # Issue the following command to clean the cache:
@@ -46,7 +48,7 @@ echo Step 4: Force the logs to rotate and remove old logs we don’tneed
 # old, irrelevant log data on all your cloned VMs. It also means that
 # your template image is smaller. Change out the “rm” command for one
 # that matches whatever your logrotate renames files as. As an aside,
-# because people usually neglect this step, if you get really, 
+# because people usually neglect this step, if you get really,
 # really bored it’s fun to look at the old log data people leave on
 # virtual appliances in cloud templates. Lots of leaked information there ;)
 
@@ -64,21 +66,21 @@ echo Step 5: Truncate the audit logs '(and other logs we want to keep placeholde
 # many more situations than just template-building.
 
 # Issue the following commands to truncate the audit logs:
-/bin/cat /dev/null > /var/log/audit/audit.log
-/bin/cat /dev/null > /var/log/wtmp
-/bin/cat /dev/null > /var/log/lastlog
-/bin/cat /dev/null > /var/log/grubby
+/bin/cat /dev/null >/var/log/audit/audit.log
+/bin/cat /dev/null >/var/log/wtmp
+/bin/cat /dev/null >/var/log/lastlog
+/bin/cat /dev/null >/var/log/grubby
 
 # Step 6: Remove the udev persistent device rules
 echo Step 6: Remove the udev persistent device rules
 
-# Have you ever noticed that if you clone/deploy a 
+# Have you ever noticed that if you clone/deploy a
 # Linux VM that won't bring up it single network interface
 # and renames the interface to something like eth1? Yep, well
 # that's the udev persistent network interface rules coming back
 # to haunt you. This is how I've decided to deal with the problem.
 
-# This generally affects CentOS /RHEL 6 and you shouldn't have to 
+# This generally affects CentOS /RHEL 6 and you shouldn't have to
 # do it in v7 but it won't hurt anything.
 
 # Issue the following command to remove the udev persistent rules:
@@ -97,7 +99,7 @@ echo Step 7: Remove the traces of the template MAC address and UUIDs
 # Step 8: Clean /tmp out
 echo Step 8: Clean /tmp out
 
-# Under normal, non-template circumstances you really don’t 
+# Under normal, non-template circumstances you really don’t
 # ever want to run rm on /tmp like this. Use tmpwatch or any
 # other manner of safer ways to do this, since there are attacks
 # people can use by leaving symlinks and what-not in /tmp that
@@ -124,7 +126,7 @@ echo Step 9: Remove the SSH host keys
 # Step 10: Remove the root user’s shell history
 echo Step 10: Remove the root user’s shell history
 
-# No sense in keeping this history around, it’s 
+# No sense in keeping this history around, it’s
 # irrelevant to the cloned VM.
 
 /bin/rm -f ~root/.bash_history
@@ -133,7 +135,7 @@ unset HISTFILE
 # Step 11: Remove the root user’s SSH history and other stuff
 echo Step 11: Remove the root user’s SSH history and other stuff
 
-# You might choose to just remove ~root/.ssh/known_hosts if 
+# You might choose to just remove ~root/.ssh/known_hosts if
 # you have SSH keys you want to keep around.
 
 /bin/rm -rf ~root/.ssh/
@@ -143,12 +145,12 @@ echo Step 11: Remove the root user’s SSH history and other stuff
 # Step 12: Clear bash history and shutdown for template creation
 echo Step 12: Clear bash history and shutdown for template creation
 
-# Time to clear the history of everything you've just done and 
+# Time to clear the history of everything you've just done and
 # shutdown the server in a clean state for converting to a VM:
 history –c
 
 #sys-unconfig
 echo FINISH CLEANUP TEMPLATE...YOUR SYSTEM REBOOT IN 15 SECONDS...
-/sbin/shutdown -r -t 15 
+/sbin/shutdown -r -t 15
 
 # The server will automatically now shutdown.
