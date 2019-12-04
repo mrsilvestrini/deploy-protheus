@@ -13,7 +13,7 @@ infrastructure/tools/advplc/**/protheus_data/
 infrastructure/tools/advplc/**/includes
 infrastructure/tools/advplc/**/historic
 infrastructure/tools/advplc/**/*tmpadvplc*/
-infrastructure/tools/advplc/windows/**/appre.dll
+infrastructure/tools/advplc/**/*.exe*
 
 #ignore files general
 **/.vscode
