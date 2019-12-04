@@ -1,4 +1,3 @@
-
 #ignore files advplc
 infrastructure/tools/advplc/**/*.ptm
 infrastructure/tools/advplc/**/*.upd
@@ -14,6 +13,7 @@ infrastructure/tools/advplc/**/protheus_data/
 infrastructure/tools/advplc/**/includes
 infrastructure/tools/advplc/**/historic
 infrastructure/tools/advplc/**/*tmpadvplc*/
+infrastructure/tools/advplc/windows/**/appre.dll
 
 #ignore files general
 **/.vscode

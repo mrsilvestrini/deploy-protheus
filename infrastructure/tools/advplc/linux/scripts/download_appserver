@@ -1,0 +1,2 @@
+curl https://arte.engpro.totvs.com.br/tec/appserver/lobo_guara/linux/64/latest/appserver.tar.gz --output appserver.tar.gz 
+tar -xzf appserver.tar.gz
