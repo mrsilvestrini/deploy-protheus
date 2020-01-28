@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Copy folder configs to /mnt/configs/network/
 #Backup files
 /bin/mkdir /etc/sysconfig/network-scripts/old

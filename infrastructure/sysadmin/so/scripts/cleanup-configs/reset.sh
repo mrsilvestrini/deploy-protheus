@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Credits this tutorial:
 # https://community.spiceworks.com/how_to/151558-create-a-rhel-centos-6-7-template-for-vmware-vsphere
 
@@ -121,7 +123,7 @@ echo Step 9: Remove the SSH host keys
 # years worth of VMs and forgot to do this in your prep script.
 # Not that I would know anything about that. Nope.
 
-/bin/rm –f /etc/ssh/*key*
+/bin/rm –rf /etc/ssh/*key*
 
 # Step 10: Remove the root user’s shell history
 echo Step 10: Remove the root user’s shell history
@@ -129,7 +131,7 @@ echo Step 10: Remove the root user’s shell history
 # No sense in keeping this history around, it’s
 # irrelevant to the cloned VM.
 
-/bin/rm -f ~root/.bash_history
+/bin/rm -rf ~root/.bash_history
 unset HISTFILE
 
 # Step 11: Remove the root user’s SSH history and other stuff
@@ -140,7 +142,7 @@ echo Step 11: Remove the root user’s SSH history and other stuff
 
 /bin/rm -rf ~root/.ssh/
 /bin/rm -rf /home/*/.ssh
-/bin/rm -f ~root/anaconda-ks.cfg
+/bin/rm -rf ~root/anaconda-ks.cfg
 
 # Step 12: Clear bash history and shutdown for template creation
 echo Step 12: Clear bash history and shutdown for template creation

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #lines for set hostname
 /bin/hostnamectl set-hostname deploy-protheus
 /bin/hostnamectl --static

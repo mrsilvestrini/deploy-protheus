@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Copy folder configs to /mnt/configs/ssh
 /bin/systemctl stop sshd.service
 /bin/systemctl status sshd.service

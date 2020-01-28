@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #lines for set mounts,my case use fstab in /etc/fstab
 echo 'Stop SMB Service...'
 /bin/systemctl stop smb
