@@ -29,7 +29,7 @@ echo Step 2: Remove any old kernels
 
 # Issue the following command to remove the old kernels (if there are any):
 yum install yum-utils -y
-package-cleanup --oldkernels --count=1
+package-cleanup --cleandupes
 
 # Step 3: Clean out Yum
 echo Step 3: Clean out Yum
@@ -56,9 +56,9 @@ echo Step 4: Force the logs to rotate and remove old logs we don’tneed
 
 # Issue the following commands to clear the logs:
 /usr/sbin/logrotate –f /etc/logrotate.conf
-/bin/rm –f /var/log/*-???????? /var/log/*.gz
-/bin/rm -f /var/log/dmesg.old
-/bin/rm -rf /var/log/anaconda
+/bin/rm –r -f /var/log/*-???????? /var/log/*.gz
+/bin/rm -r -f /var/log/dmesg.old
+/bin/rm -r -f /var/log/anaconda
 
 # Step 5: Truncate the audit logs (and other logs we want to keep placeholders for)
 echo Step 5: Truncate the audit logs '(and other logs we want to keep placeholders for)'
@@ -86,7 +86,7 @@ echo Step 6: Remove the udev persistent device rules
 # do it in v7 but it won't hurt anything.
 
 # Issue the following command to remove the udev persistent rules:
-/bin/rm -f /etc/udev/rules.d/70*
+/bin/rm -r -f /etc/udev/rules.d/70*
 
 # Step 7: Remove the traces of the template MAC address and UUIDs
 echo Step 7: Remove the traces of the template MAC address and UUIDs
@@ -111,8 +111,8 @@ echo Step 8: Clean /tmp out
 # and if there are people attacking your template you should reconsider
 # how you’re doing business really.
 
-/bin/rm –rf /tmp/*
-/bin/rm –rf /var/tmp/*
+/bin/rm –rf /tmp/
+/bin/rm –rf /var/tmp/
 
 # Step 9: Remove the SSH host keys
 echo Step 9: Remove the SSH host keys
