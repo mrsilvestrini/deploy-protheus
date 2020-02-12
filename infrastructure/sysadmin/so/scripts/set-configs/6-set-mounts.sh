@@ -10,24 +10,24 @@ echo 'Check Status SMB Services...'
 /bin/systemctl status nmb
 
 echo 'Umount Share...'
-/bin/umount your_file_system_share
+umount your_file_system_share
 
 ECHO 'Backup Files...'
-/bin/mv /etc/fstab /etc/fstab_old
+mv /etc/fstab /etc/fstab_old
 
 echo 'Update Files...'
-/bin/cp -p /mnt/configs/mounts/fstab /etc/
+cp -p /mnt/configs/mounts/fstab /etc/
 
 echo 'Start SMB Service...'
-/bin/systemctl start smb
-/bin/systemctl start nmb
+systemctl start smb
+systemctl start nmb
 
 echo 'Check Status SMB Services...'
-/bin/systemctl status smb
-/bin/systemctl status nmb
+systemctl status smb
+systemctl status nmb
 
 echo 'Mount Share...'
-/bin/mount your_file_system_share
+mount your_file_system_share
 
 echo 'Test Mount...'
-/bin/ls -la your_file_system_share
+ls -la your_file_system_share

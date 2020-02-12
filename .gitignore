@@ -23,7 +23,7 @@ infrastructure/tools/advplc/windows/**/*.qm
 
 #ssh
 authorized_keys
-set-my-ssh.sh
+5-set-my-ssh.sh
 
 #mounts
 my-fstab
