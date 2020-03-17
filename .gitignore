@@ -20,6 +20,8 @@ infrastructure/tools/advplc/windows/**/*.qm
 #ignore files general
 **/.vscode
 **/.log
+**/.vagrant
+
 
 #ssh
 authorized_keys
